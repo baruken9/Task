@@ -166,8 +166,8 @@ def q16
   ]
 
   # 以下に回答を記載
-  users.each do |user1, user2, user3,user4|
-    puts "私の名前は#{user1[:name]}です。年齢は#{user1[:age]}です。"
+  users.each do |user|
+    puts "私の名前は#{user[:name]}です。年齢は#{user[:age]}です。"
   end
 end
 
@@ -208,12 +208,8 @@ class UserQ18
   end
 
   def introduce
-    case @age
-      when 32 then
-          "こんにちは，#{@name}と申します。宜しくお願いいたします。"
-      when 10 then
-          "はいさいまいど〜，#{@name}です！！！"
-    end
+    @age > 20 ?
+          "こんにちは，#{@name}と申します。宜しくお願いいたします。":"はいさいまいど〜，#{@name}です！！！"
   end
 end
 
@@ -227,14 +223,15 @@ def q18
 end
 
 class Item
-  # 以下を修正して下さい
-  def initialize(**book)
-    @name = book[:name]
+  # 以下を修正して下さい]
+  attr_reader :name
+  def initialize(name:)
+    @name = name
   end
 
-  def name
-    "#{@name}"
-  end
+  # def name
+  #   "#{@name}"
+  # end
 end
 
 def q19
@@ -270,7 +267,7 @@ class Zoo
         @children
       when 13..64
         @adult
-      else
+      when 65..120
         @senior
     end
     puts "#{user.name}さんの入場料金は #{fee}円です。"
